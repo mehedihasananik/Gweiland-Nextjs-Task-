@@ -16,8 +16,10 @@ import image2 from "@/public/images/image2.png";
 import image3 from "@/public/images/image3.png";
 import image4 from "@/public/images/image4.png";
 import Image from "next/image";
+import SwiperSlides from "@/app/Utilites/SwiperSlides/SwiperSlides";
 
 const Banner = () => {
+  // swiper data
   const sliders = [
     { title: "premimu trees", img: image1 },
     { title: "premimu trees", img: image2 },
@@ -27,6 +29,7 @@ const Banner = () => {
 
   return (
     <div>
+      {/* swiper */}
       <Swiper
         spaceBetween={30}
         hashNavigation={{
@@ -40,18 +43,13 @@ const Banner = () => {
         modules={[Pagination, Navigation, HashNavigation]}
         className="mySwiper"
       >
-        <SwiperSlide data-history="1">
-          <Image className="w-full" src={image1} alt="" />
-        </SwiperSlide>
-        <SwiperSlide data-history="Slide 2">
-          <Image className="w-full" src={image2} alt="" />
-        </SwiperSlide>
-        <SwiperSlide data-history="3">
-          <Image className="w-full" src={image3} alt="" />
-        </SwiperSlide>
-        <SwiperSlide data-history="Slide 4">
-          <Image className="w-full" src={image4} alt="" />
-        </SwiperSlide>
+        {sliders.map((item, index) => {
+          return (
+            <SwiperSlide key={index} data-history="Slide 2">
+              <Image className="w-full" src={item.img} alt="" />
+            </SwiperSlide>
+          );
+        })}
       </Swiper>
     </div>
   );
